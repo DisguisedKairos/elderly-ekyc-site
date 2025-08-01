@@ -1,0 +1,36 @@
+<%- include('partials/top') %>
+<section class="card card-lg">
+  <h2>Step 5 of 5 — Review and Decision</h2>
+  <p>Here is a summary of your application.</p>
+
+  <ul class="summary">
+    <li><strong>Name:</strong> <%= data.name %></li>
+    <li><strong>NRIC/FIN:</strong> <%= data.nric %></li>
+    <li><strong>Email:</strong> <%= data.email %></li>
+    <li><strong>Phone:</strong> <%= data.phone %></li>
+    <li><strong>Docs:</strong> <%= docsOk ? 'Uploaded' : 'Missing' %></li>
+    <li><strong>Face Score:</strong> <%= score ? (score*100).toFixed(0)+'%' : 'Not done' %></li>
+    <li><strong>OTP:</strong> <%= otpOk ? 'Verified' : 'Not verified' %></li>
+  </ul>
+
+  <% if (decision && decision.status) { %>
+  <div class="decision <%= decision.status %>">
+    <h3><%= decision.status === 'approved' ? 'Approved ✅' : 'We Need More Information ❗' %></h3>
+    <p><%= decision.message %></p>
+    <% if (decision.status !== 'approved') { %>
+      <ul>
+        <% decision.reasons.forEach(r => { %><li><%= r %></li><% }) %>
+      </ul>
+      <div class="actions">
+        <a class="btn-primary" href="/documents">Re-upload Documents</a>
+        <a class="btn-secondary" href="/biometric">Try Face Check Again</a>
+      </div>
+    <% } %>
+  </div>
+  <% } %>
+
+  <div class="actions" style="margin-top:1rem;">
+    <a class="btn-link" href="/">Return to Start</a>
+  </div>
+</section>
+<%- include('partials/bottom') %>

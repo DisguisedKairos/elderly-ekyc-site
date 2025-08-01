@@ -1,0 +1,42 @@
+<%- include('partials/top') %>
+<form class="card card-lg" action="/register" method="post" novalidate aria-describedby="reg-help">
+  <h2>Step 1 of 5 — Registration</h2>
+  <p id="reg-help">Please enter your basic details. You can also use the <em>Retrieve MyInfo</em> to prefill (simulation).</p>
+
+  <% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert" role="alert"><%= error %></div>
+  <% } %>
+
+  <div class="form-row">
+    <label for="name">Full Name</label>
+    <input id="name" name="name" type="text" value="<%= data.name || '' %>" required aria-required="true" />
+  </div>
+
+  <div class="form-row">
+    <label for="nric">NRIC/FIN</label>
+    <input id="nric" name="nric" type="text" value="<%= data.nric || '' %>" required aria-required="true" aria-describedby="nric-hint"/>
+    <small id="nric-hint" class="hint">Example: S1234567A</small>
+  </div>
+
+  <div class="form-row">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" value="<%= data.email || '' %>" required aria-required="true" />
+  </div>
+
+  <div class="form-row">
+    <label for="phone">Mobile Number</label>
+    <input id="phone" name="phone" type="tel" value="<%= data.phone || '' %>" required aria-required="true" />
+  </div>
+
+  <div class="actions" style="display:flex; gap: 0.5rem; flex-wrap: wrap;">
+    <a class="btn-primary" href="/myinfo/consent" role="button">Retrieve MyInfo</a>
+    <button class="btn-secondary" type="button" onclick="window.location.href='/myinfo/autofill'">Mock MyInfo Autofill</button>
+    <button class="btn-primary" type="submit">Save and Continue</button>
+  </div>
+
+  <div class="nav-steps">
+    <span></span>
+    <a class="btn-link" href="/documents">Skip to Documents</a>
+  </div>
+</form>
+<%- include('partials/bottom') %>

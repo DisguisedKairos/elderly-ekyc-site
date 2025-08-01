@@ -1,0 +1,50 @@
+<%- include('partials/top') %>
+<section class="card card-lg consent-wrapper" aria-labelledby="consent-title">
+
+  <h1 id="consent-title" style="text-align:center;margin:0.25rem 0 0.75rem;">MyInfo</h1>
+
+  <p class="consent-head">
+    MyInfo retrieves personal data from relevant government agencies to pre-fill the relevant fields, making digital
+    transactions faster and more convenient.
+  </p>
+
+  <p class="consent-sub">
+    This digital service is requesting the following information from MyInfo, for the purpose of demonstrating MyInfo APIs
+  </p>
+
+  <ul class="consent-list">
+    <li>Name</li>
+    <li>Sex</li>
+    <li>Race</li>
+    <li>Nationality</li>
+    <li>Date of Birth</li>
+    <li>Email</li>
+    <li>Mobile Number</li>
+    <li>Registered Address</li>
+    <li>Housing Type</li>
+    <li>HDB Type</li>
+    <li>Marital Status</li>
+    <li>Highest Education Level</li>
+    <li>Latest Assessable Income</li>
+    <li>Hanyu Pinyin Name</li>
+    <li>Alias Name</li>
+    <li>Hanyu Pinyin Alias Name</li>
+    <li>Married Name</li>
+    <li>Employer CPF Contributions</li>
+    <li>CPF Balances</li>
+  </ul>
+
+  <p class="consent-note">
+    Clicking the "I Agree" button permits this digital service to retrieve your data based on the Terms of Use.
+  </p>
+
+  <div class="consent-actions">
+    <form action="/myinfo/consent/agree" method="post">
+      <button class="btn-success" type="submit">I Agree</button>
+    </form>
+    <form action="/myinfo/consent/decline" method="post">
+      <button class="btn-danger" type="submit">No Thanks</button>
+    </form>
+  </div>
+</section>
+<%- include('partials/bottom') %>

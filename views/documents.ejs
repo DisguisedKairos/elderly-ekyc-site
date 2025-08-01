@@ -1,0 +1,44 @@
+<%- include('partials/top') %>
+<form class="card card-lg" action="/documents" method="post" enctype="multipart/form-data" aria-describedby="doc-help">
+  <h2>Step 2 of 5 — Document Upload</h2>
+  <p id="doc-help">Upload clear photos of your ID card (front and back) and proof of address.</p>
+
+  <% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert" role="alert"><%= error %></div>
+  <% } %>
+
+  <div class="form-row">
+    <label for="idFront">ID (Front)</label>
+    <input id="idFront" name="idFront" type="file" accept="image/*,application/pdf" required aria-required="true"/>
+  </div>
+
+  <div class="form-row">
+    <label for="idBack">ID (Back)</label>
+    <input id="idBack" name="idBack" type="file" accept="image/*,application/pdf" required aria-required="true"/>
+  </div>
+
+  <div class="form-row">
+    <label for="proofAddress">Proof of Address</label>
+    <input id="proofAddress" name="proofAddress" type="file" accept="image/*,application/pdf" required aria-required="true"/>
+  </div>
+
+  <div class="actions">
+    <a class="btn-secondary" href="/register">Previous</a>
+    <button class="btn-primary" type="submit">Upload and Continue</button>
+  </div>
+
+  <% if (files && files.length) { %>
+    <div class="thumbs">
+      <% files.forEach(f => { %>
+        <figure class="thumb">
+          <img src="<%= f.preview %>" alt="<%= f.field %> preview"/>
+          <figcaption><%= f.label %></figcaption>
+        </figure>
+      <% }) %>
+    </div>
+    <div class="nav-steps">
+      <a class="btn-link" href="/biometric">Continue to Face Check</a>
+    </div>
+  <% } %>
+</form>
+<%- include('partials/bottom') %>

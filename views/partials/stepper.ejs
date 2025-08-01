@@ -1,0 +1,7 @@
+<div class="stepper" role="navigation" aria-label="Progress">
+  <div class="step <%= (step>=1)?'active':'' %>"><span class="dot">1</span>Register</div>
+  <div class="step <%= (step>1)?'done':(step===1?'':'') %> <%= (step===2)?'active':'' %>"><span class="dot">2</span>Docs</div>
+  <div class="step <%= (step>2)?'done':(step===2?'':'') %> <%= (step===3)?'active':'' %>"><span class="dot">3</span>Face</div>
+  <div class="step <%= (step>3)?'done':(step===3?'':'') %> <%= (step===4)?'active':'' %>"><span class="dot">4</span>OTP</div>
+  <div class="step <%= (step>4)?'done':(step===4?'':'') %> <%= (step===5)?'active':'' %>"><span class="dot">5</span>Decision</div>
+</div>

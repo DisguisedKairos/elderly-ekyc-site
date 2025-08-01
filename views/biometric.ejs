@@ -1,0 +1,38 @@
+<%- include('partials/top') %>
+<form class="card card-lg" action="/biometric" method="post" enctype="multipart/form-data" aria-describedby="bio-help">
+  <h2>Step 3 of 5 — Face Check (Simulation)</h2>
+  <p id="bio-help">Upload a selfie. We will simulate a face match score. For best results, look straight and ensure good lighting.</p>
+
+  <% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert" role="alert"><%= error %></div>
+  <% } %>
+
+  <section class="card" style="margin-bottom:1rem;">
+  <h3 style="margin-top:0;">Use Live Camera</h3>
+  <div id="cameraHolder" class="stack"></div>
+  <p class="hint">Tip: Face the camera, remove hats/masks, and ensure good lighting.</p>
+</section>
+
+<div class="form-row">
+    <label for="selfie">Selfie Photo</label>
+    <input id="selfie" name="selfie" type="file" accept="image/*" required aria-required="true"/>
+  </div>
+
+  <div class="actions">
+    <a class="btn-secondary" href="/documents">Previous</a>
+    <button class="btn-primary" type="submit">Check Face</button>
+  </div>
+
+  <% if (score !== undefined) { %>
+    <div class="result">
+      <p>Simulated match score: <strong><%= (score*100).toFixed(0) %>%</strong></p>
+      <% if (score >= 0.8) { %>
+        <p class="ok">Looks good. Proceed to OTP.</p>
+        <a class="btn-primary" href="/otp">Continue to OTP</a>
+      <% } else { %>
+        <p class="warn">The score is low. Try another selfie under brighter light.</p>
+      <% } %>
+    </div>
+  <% } %>
+</form>
+<%- include('partials/bottom') %>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title || "Elderly eKYC Onboarding" %></title>
+  <link rel="stylesheet" href="/assets/elderly.css" />
+</head>
+<body class="no-navbar">
+  <header class="a11y-bar" aria-label="Accessibility tools">
+    <div class="a11y-left">
+      <span class="brand">eKYC for Elderly</span>
+      <span class="sr-only" aria-live="polite" id="a11y-status"></span>
+    </div>
+    <div class="a11y-controls">
+      <button id="textSmaller" class="a11y-btn" aria-label="Decrease text size">A-</button>
+      <button id="textBigger" class="a11y-btn" aria-label="Increase text size">A+</button>
+      <button id="toggleContrast" class="a11y-btn" aria-pressed="false" aria-label="Toggle high contrast">High Contrast</button>
+      <button id="readAloud" class="a11y-btn" aria-pressed="false" aria-label="Read this page aloud">Read Aloud</button>
+    </div>
+  </header>
+  <main id="content" class="content" tabindex="-1">
+    <div class="progress" aria-label="Progress">
+      <div class="progress-bar" style="width:<%= progress || 0 %>%;" aria-valuenow="<%= progress || 0 %>" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
