@@ -1,7 +1,7 @@
 {
   "name": "elderly-ekyc-site",
   "version": "1.0.0",
-  "description": "Elderly-friendly eKYC demo (from scratch) with EJS + Express",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"

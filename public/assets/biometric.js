@@ -85,7 +85,7 @@
     useBtn.addEventListener('click', async ()=>{
       const dataUrl = preview.src;
       if(!dataUrl){ return; }
-      // Prefer multipart upload with blob so server's Multer sees 'selfie'
+      
       const res = await fetch('/biometric', {
         method: 'POST',
         body: await (async ()=>{
@@ -95,7 +95,7 @@
           return fd;
         })()
       });
-      // Redirect to GET /biometric so the score shows
+      
       window.location.href = '/biometric';
     });
 

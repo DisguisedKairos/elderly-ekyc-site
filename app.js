@@ -110,9 +110,9 @@ app.post('/myinfo/consent/decline', (req, res) => {
 app.get('/myinfo/autofill', (req, res) => {
   const data = ensureData(req);
   Object.assign(data, {
-    name: 'TAN AH KOW',
+    name: 'Aisaac Sim',
     nric: 'S1234567A',
-    email: 'ah.kow@example.com',
+    email: 'aisaac@example.com',
     phone: '91234567'
   });
   return res.redirect('/register');
@@ -150,7 +150,7 @@ app.get('/biometric', (req, res) => {
 app.post('/biometric', upload.single('selfie'), (req, res) => {
   const data = ensureData(req);
   if (!req.file) {
-    // Support base64 snapshot as fallback
+    
     const snap = req.body && req.body.snapshot;
     if (!snap || !/^data:image\/(png|jpeg);base64,/.test(snap)) {
       return res.status(400).render('biometric', { title:'Face Check', error:'Please upload or capture a selfie.', progress: 60 });
